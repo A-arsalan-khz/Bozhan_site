@@ -1,0 +1,7 @@
+<h1>سامانه حمل و نقل بوژان تریلر</h1>
+{% if request.user.is_authenticated%}
+<a href="{% url 'Logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'Login' %}"></a>
+{% endif %}
+<hr />

@@ -1,0 +1,12 @@
+POST http://127.0.0.1:8000/login
+Content-Type: application/json
+
+{"username": "bazras2", "password": "inspector2"}
+
+###
+
+POST http://127.0.0.1:8000/test_token
+Content-Type: application/json
+Authorization: : Token 6c7fda797eb208129e0e546e969a60ac8807e880
+
+{}
