@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Beautiful Search Bar</title>
+  <link rel="stylesheet" href="{% static 'inspector/css/main.css' %}">
+</head>
+<body>
+  <div class="search-wrapper">
+    <form action="/search/" method="get" class="search-bar">
+      <select name="category">
+        <option value="">Category</option>
+        <option value="books">Books</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+      </select>
+
+      <select name="price">
+        <option value="">Price</option>
+        <option value="low">Under $50</option>
+        <option value="medium">$50 - $100</option>
+        <option value="high">Over $100</option>
+      </select>
+
+      <button type="submit">🔍 Search</button>
+    </form>
+  </div>
+</body>
+</html>
