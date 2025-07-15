@@ -1,5 +1,10 @@
 from django.urls import path, include
-from .views import ListUsers
+from rest_framework.routers import DefaultRouter
+from .views import Product_view
+
+router = DefaultRouter()
+router.register(r'products', Product_view, basename='qwe')
+
 urlpatterns = [
-    path('inspector/', ListUsers.as_view(), name='inspector')
+    path('',include(router.urls))
 ]

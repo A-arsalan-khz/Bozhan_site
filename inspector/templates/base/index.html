@@ -1,30 +1,97 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Beautiful Search Bar</title>
-  <link rel="stylesheet" href="{% static 'inspector/css/main.css' %}">
+  <title>Product List</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="search-wrapper">
-    <form action="/search/" method="get" class="search-bar">
-      <select name="category">
-        <option value="">Category</option>
-        <option value="books">Books</option>
-        <option value="electronics">Electronics</option>
-        <option value="fashion">Fashion</option>
-      </select>
+<body class="bg-light">
 
-      <select name="price">
-        <option value="">Price</option>
-        <option value="low">Under $50</option>
-        <option value="medium">$50 - $100</option>
-        <option value="high">Over $100</option>
-      </select>
+<div class="container mt-5">
+  <h1 class="mb-4">Products</h1>
+  <div id="grouped-products" class="row g-4"></div>
+</div>
 
-      <button type="submit">🔍 Search</button>
-    </form>
-  </div>
+<script>
+  const variantLabels = {
+    0: "TTL",
+    1: "FB1",
+    2: "FB2",
+    3: "CC1",
+    4: "TC1",
+    5: "TC2",
+    6: "DT1",
+    7: "DT2",
+    8: "GT1",
+    9: "CS1",
+  };
+
+  fetch("http://127.0.0.1:8000/api/products/")
+    .then(res => res.json())
+    .then(data => {
+      const grouped = {};
+
+      // Group products by variant
+      data.forEach(product => {
+        const variant = product.variant;
+        if (!grouped[variant]) {
+          grouped[variant] = [];
+        }
+        grouped[variant].push(product.vin);
+      });
+
+      const container = document.getElementById("grouped-products");
+
+      // Render each variant group
+      for (const variant in grouped) {
+        const variantId = `vin-list-${variant}`; // unique ID for list
+
+        const col = document.createElement("div");
+        col.className = "col-md-6";
+
+        const card = document.createElement("div");
+        card.className = "card shadow-sm";
+
+        const cardBody = document.createElement("div");
+        cardBody.className = "card-body";
+
+        // Build content
+        cardBody.innerHTML = `
+          <h5 class="card-title">Variant: ${variantLabels[variant] || variant}</h5>
+          <button class="btn btn-primary mb-2" onclick="toggleList('${variantId}', this)">Show VINs</button>
+          <ul class="list-group list-group-flush d-none" id="${variantId}">
+            ${grouped[variant].map(vin => `
+              <li class="list-group-item">
+                <a href="/product/${vin}" class="text-decoration-none" target="_blank">${vin}</a>
+              </li>
+            `).join("")}
+          </ul>
+        `;
+
+        card.appendChild(cardBody);
+        col.appendChild(card);
+        container.appendChild(col);
+      }
+    });
+
+  // Toggle VIN list visibility
+  function toggleList(id, button) {
+    const list = document.getElementById(id);
+    const isHidden = list.classList.contains("d-none");
+
+    if (isHidden) {
+      list.classList.remove("d-none");
+      button.textContent = "Hide VINs";
+      button.classList.remove("btn-primary");
+      button.classList.add("btn-danger");
+    } else {
+      list.classList.add("d-none");
+      button.textContent = "Show VINs";
+      button.classList.remove("btn-danger");
+      button.classList.add("btn-primary");
+    }
+  }
+</script>
+
+
 </body>
 </html>

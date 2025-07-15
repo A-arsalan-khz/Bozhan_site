@@ -15,7 +15,7 @@ def login(request):
     token,created = Token.objects.get_or_create(user = user)
     serializer = UserSerializer(user)
     if user.groups.filter(name = 'inspector').exists():
-        redirect_url = '/inspector/'
+        redirect_url = '/products/'
     elif user.groups.filter(name = 'user').exists():
         redirect_url = '/user'
     else:

@@ -1,19 +1,8 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import authentication, permissions
-from django.contrib.auth.models import User
-
-class ListUsers(APIView):
-    """
-    View to list all users in the system.
-
-    * Requires token authentication.
-    * Only admin users are able to access this view.
-    """
-
-    def get(self, request, format=None):
-        """
-        Return a list of all users.
-        """
-        usernames = [user.username for user in User.objects.all()]
-        return Response(usernames)
+from rest_framework.decorators import api_view
+from rest_framework.viewsets import ModelViewSet
+from inspector.models import Products
+from .serializers import Products_Serializer
+class Product_view(ModelViewSet):
+    queryset = Products.objects.all()
+    serializer_class = Products_Serializer
+    lookup_field = 'vin'
