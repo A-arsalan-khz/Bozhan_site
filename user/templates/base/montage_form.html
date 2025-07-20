@@ -67,7 +67,7 @@
                     <tr><td>عدم ورود آب  رطوبت غیر متعارف در وسیله نقلیه یا ماشین و سیستم های مربوطه(اتاق، چراغ و سایر موارد)</td><td>{{ item.no_abnormal_water_intrusion|binary_to_int }}</td></tr>
                     <tr><td>عدم وجود درز و بیرون زدگی غیر متعارف در بدنه</td><td>{{ item.body_gap_defect_absence|binary_to_int }}</td></tr>
                     <tr><td>رگلاژ مناسب رنگ بدنه</td><td>{{ item.door_alignment|binary_to_int }}</td></tr>
-                    <tr><td>کیفیت مناسب رنگ بدنه</td><td>{{ item.respecting_clients|binary_to_int }}</td></tr>
+                    <tr><td>کیفیت مناسب رنگ بدنه</td><td>{{ item.body_paint_quality|binary_to_int }}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>

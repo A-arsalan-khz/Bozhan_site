@@ -64,13 +64,13 @@
                 </thead>
                 <tbody>
                     {% for item in data %}
-                    <tr><td>پذیرش و برخورد خوب</td><td>{{ item.acceptance_on_time|binary_to_int }}</td></tr>
+                    <tr><td>پذیرش در موعد مقرر</td><td>{{ item.acceptance_on_time|binary_to_int }}</td></tr>
                     <tr><td>تشخیص عیب</td><td>{{ item.fault_diagnosis|binary_to_int }}</td></tr>
                     <tr><td>وجود قطعه لازم</td><td>{{ item.necessary_parts_existence|binary_to_int }}</td></tr>
                     <tr><td>تعمیر در زمان مقرر</td><td>{{ item.repair_on_time|binary_to_int }}</td></tr>
                     <tr><td>کارکرد مناسب پس از تعمیر</td><td>{{ item.proper_operation_after_repair|binary_to_int }}</td></tr>
-                    <tr><td>عدم ایجاد خسارت‌های دیگر</td><td>{{ item.no_damage_to_property|binary_to_int }}</td></tr>
-                    <tr><td>رعایت تعرفه قیمت‌ها</td><td>{{ item.tariff_compliance|binary_to_int }}</td></tr>
+                    <tr><td>عدم ایجاد خسارت در نمایندگی مجاز</td><td>{{ item.no_damage_to_property|binary_to_int }}</td></tr>
+                    <tr><td>رعایت تعرفه قطعات و دستمزد</td><td>{{ item.tariff_compliance|binary_to_int }}</td></tr>
                     <tr><td>رعایت تکریم ارباب‌رجوع</td><td>{{ item.respecting_clients|binary_to_int }}</td></tr>
                     {% endfor %}
                 </tbody>

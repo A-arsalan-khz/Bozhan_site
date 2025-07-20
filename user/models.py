@@ -40,7 +40,7 @@ class UserPublicinformation(models.Model):
         db_table = 'user_publicinformation'
 
 
-class UserFormaftersale(models.Model):
+class UserFormaftersale(models.Model):# form 1
     acceptance_on_time = models.TextField(blank=True, null=True)  # This field type is a guess.
     fault_diagnosis = models.TextField(blank=True, null=True)  # This field type is a guess.
     necessary_parts_existence = models.TextField(blank=True, null=True)  # This field type is a guess.
@@ -55,7 +55,7 @@ class UserFormaftersale(models.Model):
         db_table = 'user_formaftersale'
 
 
-class UserFormpartssystemsqualityrating(models.Model):
+class UserFormpartssystemsqualityrating(models.Model):# form 3
     brake_system_functionality = models.TextField(blank=True, null=True)  # This field type is a guess.
     suspension_system_functionality = models.TextField(blank=True, null=True)  # This field type is a guess.
     electrical_system_functionality = models.TextField(blank=True, null=True)  # This field type is a guess.
@@ -73,7 +73,7 @@ class UserFormpartssystemsqualityrating(models.Model):
         db_table = 'user_formpartssystemsqualityrating'
 
 
-class UserFormvehicleassemblyquality(models.Model):
+class UserFormvehicleassemblyquality(models.Model):# form 3
     cabin_noise_absence = models.TextField(blank=True, null=True)  # This field type is a guess.
     fluid_leak_absence = models.TextField(blank=True, null=True)  # This field type is a guess.
     no_abnormal_water_intrusion = models.TextField(blank=True, null=True)  # This field type is a guess.

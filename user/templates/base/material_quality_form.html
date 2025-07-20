@@ -1,0 +1,81 @@
+{% load binary_filters %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم اطلاعات</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap');
+        body {
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 16px;
+            background: #ddd;
+            padding: 8px;
+            margin: 0 -15px 15px -15px;
+            text-align: center;
+            border-radius: 6px 6px 0 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table th, table td {
+            border: 1px solid #999;
+            padding: 6px;
+            text-align: center;
+        }
+
+        table th {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>گزارش رضایتمندی مشتری از کیفیت مونتاژ محصول</h2>
+                    <table>
+                <thead>
+                    <tr>
+                        <th>عنوان ارزیابی</th>
+                        <th>امتیاز (1 تا 10)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr><td>کارکرد مناسب سیستم ترمزگیری</td><td>{{ item.brake_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم تعلیق</td><td>{{ item.suspension_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم های برقی</td><td>{{ item.electrical_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم تهیه مطبوع</td><td>{{ item.ac_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم مولتی مدیا</td><td>{{ item.multimedia_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم چراغ و روشنایی</td><td>{{ item.lighting_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم قوای محرکه</td><td>{{ item.power_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم انتقال قدرت</td><td>{{ item.transmission_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب سیستم سوخت رسانی</td><td>{{ item.fuel_system_functionality|binary_to_int }}</td></tr>
+                    <tr><td>کیفیت مناسب صندلی و پشت سری</td><td>{{ item.seat_headrest_quality|binary_to_int }}</td></tr>
+                    <tr><td>کیفیت مناسب داشبورد و تزئینات داخلی</td><td>{{ item.dashboard_trim_quality|binary_to_int }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from django.http import HttpResponse
-from .models import UserFormaftersale,UserFormpartssystemsqualityrating
+from .models import UserFormaftersale,UserFormpartssystemsqualityrating,UserFormvehicleassemblyquality
+import os
+from django.http import FileResponse
+
 # @api_view(['GET'])
 # @authentication_classes([TokenAuthentication])
 # @permission_classes([IsAuthenticated])
@@ -14,13 +17,14 @@ def catalog(request):
 def guarantee(request):
     return render(request, "base/guarantee.html")
 def COC(request):
-    return render(request, "base/COC.html")
+    return render(request, 'base/COC.html')
 def after_sale_form(request):
     data = UserFormaftersale.objects.all()  # Fetch all records
     return render(request, 'base/after_sale_form.html', {'data': data})
 def montage_form(request):
-    data = UserFormpartssystemsqualityrating.objects.all()
+    data = UserFormvehicleassemblyquality.objects.all()
     return render(request, "base/montage_form.html",{"data":data})
 def material_quality_form(request):
-    return render(request, "base/material_quality_form.html")
+    data = UserFormpartssystemsqualityrating.objects.all()
+    return render(request, "base/material_quality_form.html",{"data":data})
 
