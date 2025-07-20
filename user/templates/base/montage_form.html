@@ -1,0 +1,76 @@
+{% load binary_filters %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم اطلاعات</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap');
+        body {
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 16px;
+            background: #ddd;
+            padding: 8px;
+            margin: 0 -15px 15px -15px;
+            text-align: center;
+            border-radius: 6px 6px 0 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table th, table td {
+            border: 1px solid #999;
+            padding: 6px;
+            text-align: center;
+        }
+
+        table th {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>گزارش رضایتمندی مشتری از کیفیت مونتاژ محصول</h2>
+                    <table>
+                <thead>
+                    <tr>
+                        <th>عنوان ارزیابی</th>
+                        <th>امتیاز (1 تا 10)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr><td>عدم وجود سروصدای اضافی در اتاق</td><td>{{ item.cabin_noise_absence|binary_to_int }}</td></tr>
+                    <tr><td>عدم وجود نشتی از مایعات</td><td>{{ item.fluid_leak_absence|binary_to_int }}</td></tr>
+                    <tr><td>عدم ورود آب  رطوبت غیر متعارف در وسیله نقلیه یا ماشین و سیستم های مربوطه(اتاق، چراغ و سایر موارد)</td><td>{{ item.no_abnormal_water_intrusion|binary_to_int }}</td></tr>
+                    <tr><td>عدم وجود درز و بیرون زدگی غیر متعارف در بدنه</td><td>{{ item.body_gap_defect_absence|binary_to_int }}</td></tr>
+                    <tr><td>رگلاژ مناسب رنگ بدنه</td><td>{{ item.door_alignment|binary_to_int }}</td></tr>
+                    <tr><td>کیفیت مناسب رنگ بدنه</td><td>{{ item.respecting_clients|binary_to_int }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

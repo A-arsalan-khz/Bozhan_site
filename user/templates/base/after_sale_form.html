@@ -1,0 +1,81 @@
+{% load binary_filters %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم اطلاعات</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap');
+        body {
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            margin: 10px;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+            border: 1px solid #999;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 16px;
+            background: #ddd;
+            padding: 8px;
+            margin: 0 -15px 10px -15px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        table th, table td {
+            border: 1px solid #999;
+            padding: 5px;
+            text-align: center;
+        }
+
+        table th {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- بخش رضایتمندی مشتری -->
+        <div class="form-section">
+            <h2>گزارش رضایتمندی مشتری از خدمات پس از فروش</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>عنوان ارزیابی</th>
+                        <th>امتیاز (1 تا 10)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr><td>پذیرش و برخورد خوب</td><td>{{ item.acceptance_on_time|binary_to_int }}</td></tr>
+                    <tr><td>تشخیص عیب</td><td>{{ item.fault_diagnosis|binary_to_int }}</td></tr>
+                    <tr><td>وجود قطعه لازم</td><td>{{ item.necessary_parts_existence|binary_to_int }}</td></tr>
+                    <tr><td>تعمیر در زمان مقرر</td><td>{{ item.repair_on_time|binary_to_int }}</td></tr>
+                    <tr><td>کارکرد مناسب پس از تعمیر</td><td>{{ item.proper_operation_after_repair|binary_to_int }}</td></tr>
+                    <tr><td>عدم ایجاد خسارت‌های دیگر</td><td>{{ item.no_damage_to_property|binary_to_int }}</td></tr>
+                    <tr><td>رعایت تعرفه قیمت‌ها</td><td>{{ item.tariff_compliance|binary_to_int }}</td></tr>
+                    <tr><td>رعایت تکریم ارباب‌رجوع</td><td>{{ item.respecting_clients|binary_to_int }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

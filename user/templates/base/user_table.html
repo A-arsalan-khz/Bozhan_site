@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اطلاعات عمومی و فنی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            margin: 20px;
+            background: #f0f2f5;
+            direction: rtl;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            font-weight: bold;
+            width: 30%;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        table tr:hover {
+            background-color: #eaf3ff;
+            transition: background 0.3s ease;
+        }
+
+        td {
+            color: #333;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        /* حالت ریسپانسیو برای موبایل */
+        @media (max-width: 600px) {
+            table, tbody, tr, th, td {
+                display: block;
+                width: 100%;
+            }
+            tr {
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+            th {
+                text-align: right;
+                background: #0056b3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>اطلاعات عمومی و فنی</h1>
+    <div id="loading" class="loading">در حال بارگذاری...</div>
+    <table id="userTable" style="display:none;">
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        async function loadUserData() {
+            const loading = document.getElementById('loading');
+            const table = document.getElementById('userTable');
+            const tableBody = document.getElementById('tableBody');
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/user/');
+                const data = await response.json();
+
+                if (data.length === 0) {
+                    loading.textContent = "داده‌ای یافت نشد.";
+                    return;
+                }
+
+                // Persian Header Map
+                const headerMap = {
+                    type_approval_number: 'شماره تأیید نوع',
+                    typee: 'نوع',
+                    brand_name: 'نام تجاری',
+                    category: 'گونه',
+                    model: 'مدل',
+                    color: 'رنگ',
+                    production_date: 'تاریخ تولید',
+                    delivery_date: 'تاریخ تحویل به مشتری',
+                    vin: 'شماره VIN/PIN',
+                    engine_number: 'شماره موتور',
+                    essential_accessories: 'لوازم ضروری',
+                    additional_features: 'امکانات اضافی (آپشن)',
+                    pure_mass: 'جرم خالص',
+                    maximum_permissible_technical_mass: 'حداکثر جرم مجاز فنی',
+                    pollution_standard_level: 'سطح استاندارد آلایندگی',
+                    static_sound_level: 'سطح صدای ساکن',
+                    guarantee_period: 'دوره گارانتی'
+                };
+
+                // فقط اولین رکورد
+                const record = data[0];
+
+                Object.keys(record).forEach(key => {
+                    const tr = document.createElement('tr');
+
+                    const th = document.createElement('th');
+                    th.textContent = headerMap[key] || key;
+
+                    const td = document.createElement('td');
+                    td.textContent = record[key] || '-';
+
+                    tr.appendChild(th);
+                    tr.appendChild(td);
+                    tableBody.appendChild(tr);
+                });
+
+                loading.style.display = 'none';
+                table.style.display = 'table';
+
+            } catch (error) {
+                loading.textContent = "خطا در بارگذاری داده‌ها.";
+                console.error(error);
+            }
+        }
+
+        loadUserData();
+    </script>
+
+</body>
+</html>
