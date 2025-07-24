@@ -5,7 +5,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-  <title>صفحه مشتری</title>
+  <title>اطلاعات محصول</title>
   <style>
     /* Container & Typography */
     body {
@@ -66,9 +66,9 @@
     .box-items a {
       display: inline-block;
       margin-top: 0.5rem;
-      padding: 0.4rem 0.8rem;
+      padding: 0.8rem 1.2rem;
       background: #007bff;
-      color: #fff;
+      color: #ffffffff;
       text-decoration: none;
       border-radius: 4px;
       font-size: 0.9rem;
@@ -84,69 +84,104 @@
     <div class="box-list">
       
       <div class="box">
-        <h2 class="box-title">اطلاعات عمومی و فنی</h2>
+        <h2 class="box-title">فهرست اقلام ورودی</h2>
         <ul class="box-items">
           <li>
-            <a href="http://127.0.0.1:8000/user-table/" target="_self">مشاهده اطلاعات</a>
+            <a href="http://127.0.0.1:8000/COP/" target="_self">مشاهده اطلاعات</a>
           </li>
         </ul>
       </div>
 
       <div class="box">
-        <h2 class="box-title">دفترچه راهنمای کاربری خودرو</h2>
+        <h2 class="box-title">کاربرگ‌های کنترلی اقلام ورودی قطعات</h2>
         <ul class="box-items">
           <li>
-            <a href="http://127.0.0.1:8000/catalog/" target="_self">مشاهده اطلاعات</a>
+            <a href="" target="_self">مشاهده اطلاعات</a>
           </li>
         </ul>
       </div>
 
       <div class="box">
-        <h2 class="box-title">اطلاعات تعمیر و نگهداری</h2>
+        <h2 class="box-title">کنترل حین تولید و چک لیست‌های مربطه</h2>
         <ul class="box-items">
           <li>
-            <a href="http://127.0.0.1:8000/guarantee/" target="_self">مشاهده اطلاعات</a>
+            <a href="" target="_self">مشاهده اطلاعات</a>
           </li>
         </ul>
       </div>
 
       <div class="box">
-        <h2 class="box-title">گواهینامه (اظهاریه) انطباق محصول (COC)</h2>
+        <h2 class="box-title">چک لیست‌های کنترلی نهایی محصول</h2>
         <ul class="box-items">
           <li>
-            <a href="http://127.0.0.1:8000/COC" target="_self">مشاهده اطلاعات</a>
+            <a href="" target="_self">مشاهده اطلاعات</a>
           </li>
         </ul>
       </div>
 
       <div class="box">
-        <h2 class="box-title">گزارش رضایتمندی مشتری از نحوه ارائه خدمات پس از فروش</h2>
+        <h2 class="box-title">تاریخ تولید، شماره گذاری و خروجی محصول از کارخانه</h2>
         <ul class="box-items">
           <li>
-            <a href="http://127.0.0.1:8000/after_sale_form" target="_self">مشاهده اطلاعات</a>
+            <a href="http://127.0.0.1:8000/Exclusive_Manufacturer_System/date/" target="_self">مشاهده اطلاعات</a>
           </li>
         </ul>
       </div>
 
       <div class="box">
-        <h2 class="box-title">گزارش رضایتمندی مشتری از کیفیت مونتاژ خودرو</h2>
+        <h2 class="box-title">مقصد وسیله نقلیه بعد از خروج از کارخانه</h2>
         <ul class="box-items">
           <li>
-            <a href="http://127.0.0.1:8000/montage_form" target="_self">مشاهده اطلاعات</a>
+            <a href="" target="_self">مشاهده اطلاعات</a>
           </li>
         </ul>
       </div>
 
       <div class="box">
-        <h2 class="box-title">گزارش رضایتمندی مشتری از کیفیت قطعات و سیستم های خودرو</h2>
+        <h2 class="box-title">آرشیو فنی محصولات</h2>
         <ul class="box-items">
           <li>
-            <a href="http://127.0.0.1:8000/material_quality_form" target="_self">مشاهده اطلاعات</a>
+            <a href="" target="_self">مشاهده اطلاعات</a>
           </li>
         </ul>
       </div>
 
+      <div class="box">
+        <h2 class="box-title">چاپ سند و مراحل شماره‌گذاری</h2>
+        <ul class="box-items">
+          <li>
+            <a href="" target="_self">مشاهده اطلاعات</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2 class="box-title">ویژگی‌های فنی و عمومی</h2>
+        <ul class="box-items">
+          <li>
+            <a href="" target="_self">مشاهده اطلاعات</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2 class="box-title">اطلاعات مشتری</h2>
+        <ul class="box-items">
+          <li>
+            <a href="" target="_self">مشاهده اطلاعات</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </main>
+<script>
+  // Extract VIN from the URL
+  const params = new URLSearchParams(window.location.search);
+  const vin = params.get("vin");
+  console.log("VIN:", vin);
+
+  // Example: show VIN in an element
+  document.getElementById("vin-display").textContent = vin;
+</script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مشاهده تاریخ‌ها</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap');
+    
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #f5f5f5;
+      margin: 20px;
+      color: #333;
+    }
+
+    .date-container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .date-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #444;
+      text-align: center;
+    }
+
+    .date-item {
+      margin-bottom: 15px;
+      text-align: center; /* تمام محتوا وسط چین */
+    }
+
+    .date-item label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 5000;
+      color: #555;
+    }
+
+    .date-item input {
+      width: 50%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      text-align: center; /* متن ورودی وسط چین */
+    }
+  </style>
+</head>
+<body>
+  <div class="date-container">
+    <div class="date-title">تاریخ‌ها</div>
+    <div class="date-item">
+      <label for="date1">تاریخ تولید:</label>
+      <input type="text" id="date1" placeholder="1403/05/30">
+    </div>
+    <div class="date-item">
+      <label for="date2">تاریخ شماره‌گذاری:</label>
+      <input type="text" id="date2" placeholder="1403/05/30">
+    </div>
+    <div class="date-item">
+      <label for="date3">تاریخ خروج محصول:</label>
+      <input type="text" id="date3" placeholder="1403/05/30">
+    </div>
+  </div>
+</body>
+</html>

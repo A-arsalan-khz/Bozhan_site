@@ -7,3 +7,12 @@ from django.http import HttpResponse
 def inspector(request):
     return render(request, "base/index.html")
 
+def Exclusive_Manufacturer_System(request):
+    vin = request.GET.get('vin')  
+    return render(request, 'base/Exclusive_Manufacturer_System.html', {'vin': vin})
+
+def COP(request):
+    return render(request, 'base/COP.html')
+
+def date(request):
+    return render(request,'base/dates.html')

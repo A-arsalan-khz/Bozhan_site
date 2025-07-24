@@ -91,7 +91,7 @@
           <ul class="list-group list-group-flush vin-list" id="${variantId}">
             ${
               vins.length > 0
-                ? vins.map(vin => `<li class="list-group-item"><a href="/product/${vin}" class="text-decoration-none" target="_blank">${vin}</a></li>`).join("")
+                ? vins.map(vin => `<li class="list-group-item"><a href="#" class="text-decoration-none" onclick="openProductPage('${vin}')">${vin}</a></li>`).join("")
                 : `<li class="list-group-item text-muted">No VINs available</li>`
             }
           </ul>
@@ -119,6 +119,10 @@ function toggleList(id, button) {
     button.classList.remove("btn-primary");
     button.classList.add("btn-danger");
   }
+}
+function openProductPage(vin) {
+  // Redirect to Exclusive_Manufacturer_System.html with VIN in the query string
+  window.location.href = `/Exclusive_Manufacturer_System?vin=${vin}`;
 }
 </script>
 
